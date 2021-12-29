@@ -1,5 +1,4 @@
-const fileUpload = (file: File) => {
-  console.log(file);
+const fileUpload = async (file: File) => {
   if (!file) {
     return null;
   }
@@ -8,19 +7,20 @@ const fileUpload = (file: File) => {
 
   formData.append('File', file);
 
-  fetch('http://localhost:3001/api/v1/polygons',
+  const response = await fetch('http://localhost:3001/api/v1/polygons',
     {
       method: 'POST',
       body: formData,
     }
   )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log('Success:', result);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  
+  if (!response.ok) {
+    console.error('Error:', response.statusText);
+  }
+
+  const data = await response.json();
+
+  return data;
 };
 
 export default fileUpload;
