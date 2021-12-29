@@ -1,35 +1,23 @@
-import React, { useCallback } from 'react';
-import Dropzone from 'react-dropzone';
-import { useDispatch } from 'react-redux'
-import { fetchAnnotations } from './features/annotations/annotationsSlice';
+import React from 'react';
+import { connect } from "react-redux";
 import styles from './App.module.scss';
+import UploadFile from './components/uploadFile/uploadFile';
+import { RootState } from './store/store';
+import { AnnotationState } from './features/annotations/annotationsSlice';
+import DisplayAreas from './components/displayAreas/displayAreas';
+import Logo from './components/logo/logo';
 
-const App: React.FC = () => {
-  const dispatch = useDispatch();
+interface AppProps {
+  annotations: AnnotationState;
+}
 
-  const fileDrop = useCallback((files: File[]) => {
-    dispatch(fetchAnnotations(files[0]));
-  }, [])
-  
-  return (
-    <div>
-      <Dropzone onDrop={fileDrop}>
-        {({getRootProps, getInputProps}) => (
-          <div className={styles.dropZone}>
-            <div
-              {...getRootProps({
-                className: 'dropzone',
-                onDrop: event => event.stopPropagation()
-              })}
-            >
-              <input {...getInputProps()} />
-              <p>Drag n drop some files here, or click to select files</p>
-            </div>
-          </div>
-        )}
-      </Dropzone>
-    </div>
-  );
-};
+const App: React.FC<AppProps> = ({ annotations }) => (
+  <div className={styles.container}>
+    <div className={styles.header}><Logo/></div>
+    {Object.keys(annotations).length <= 0 ? <UploadFile/> : <DisplayAreas/>}
+  </div>
+);
 
-export default App;
+const mapStateToProps = ({ annotations }: RootState) => ({ annotations });
+
+export default connect(mapStateToProps)(App);
