@@ -3,21 +3,21 @@ import { connect } from "react-redux";
 import styles from './App.module.scss';
 import UploadFile from './components/uploadFile/uploadFile';
 import { RootState } from './store/store';
-import { AnnotationState } from './features/annotations/annotationsSlice';
+import { AreasState } from './features/areas/areasSlice';
 import DisplayAreas from './components/displayAreas/displayAreas';
 import Logo from './components/logo/logo';
 
 interface AppProps {
-  annotations: AnnotationState;
+  areas: AreasState;
 }
 
-const App: React.FC<AppProps> = ({ annotations }) => (
+const App: React.FC<AppProps> = ({ areas }) => (
   <div className={styles.container}>
     <div className={styles.header}><Logo/></div>
-    {Object.keys(annotations).length <= 0 ? <UploadFile/> : <DisplayAreas/>}
+    {Object.keys(areas).length <= 0 ? <UploadFile/> : <DisplayAreas/>}
   </div>
 );
 
-const mapStateToProps = ({ annotations }: RootState) => ({ annotations });
+const mapStateToProps = ({ areas }: RootState) => ({ areas });
 
 export default connect(mapStateToProps)(App);

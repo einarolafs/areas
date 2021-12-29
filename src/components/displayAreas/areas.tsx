@@ -2,23 +2,27 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { RootState } from '../../store/store';
 
+import styles from './areas.module.scss';
+
 interface AreasProps {
   category: string;
   areas?: number[];
 }
 
+const numberFormat = new Intl.NumberFormat('de-DE');
+
 const Areas: React.FC<AreasProps> = ({ areas }) => {
   return <>
     {areas?.map((area) => (
-      <div key={area}>
-        {new Intl.NumberFormat('de-DE').format(area)}
+      <div key={area} className={styles.container}>
+        {numberFormat.format(area)}
       </div>
     ))}
   </>
 }
 
 const mapStateToProps = (state: RootState, { category }: AreasProps): AreasProps => {
-  const areas = [...(state.annotations[category] || [])].sort((a, b) => b - a);
+  const areas = [...(state.areas[category].areas || [])].sort((a, b) => b - a);
 
   return {
     areas,

@@ -1,17 +1,23 @@
-import React, { useCallback, useMemo, useState, SyntheticEvent } from 'react';
+import React, { useCallback, useMemo, useState, SyntheticEvent, useEffect } from 'react';
 import { connect } from "react-redux";
-import { AnnotationState } from '../../features/annotations/annotationsSlice';
+import { AreasState } from '../../features/areas/areasSlice';
 import { RootState } from "../../store/store";
 import styles from './displayAreas.module.scss';
 import Areas from './areas';
 
 interface DisplayAreasProps {
-  annotations: AnnotationState;
+  areas: AreasState;
 }
 
-const DisplayAreas: React.FC<DisplayAreasProps> = ({ annotations }) => {
+const DisplayAreas: React.FC<DisplayAreasProps> = ({ areas }) => {
   const [selected, setSelected] = useState<string>();
-  const categories = useMemo(() => Object.keys(annotations), [annotations]);
+  const categories = useMemo(() => Object.keys(areas), [areas]);
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      setSelected(categories[0]);
+    }
+  }, [])
 
   const handleClick = useCallback((event: SyntheticEvent<HTMLButtonElement>) => {
     if (!(event.target instanceof HTMLButtonElement)) {
@@ -44,6 +50,6 @@ const DisplayAreas: React.FC<DisplayAreasProps> = ({ annotations }) => {
   )
 }
 
-const mapStateToProps = ({ annotations }: RootState) => ({ annotations });
+const mapStateToProps = ({ areas }: RootState) => ({ areas });
 
 export default connect(mapStateToProps)(DisplayAreas);

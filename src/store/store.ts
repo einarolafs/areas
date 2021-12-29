@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import annotationsReducer from '../features/annotations/annotationsSlice';
+import areasReducer from '../features/areas/areasSlice';
 
 export const store = configureStore({
   reducer: {
-    annotations: annotationsReducer,
+    areas: areasReducer,
   },
 });
 

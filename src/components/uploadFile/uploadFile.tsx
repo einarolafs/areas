@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDispatch } from 'react-redux'
-import { fetchAnnotations } from '../../features/annotations/annotationsSlice';
+import { fetchAnnotations } from '../../features/areas/areasSlice';
 
 import styles from './uploadFile.module.scss';
 
