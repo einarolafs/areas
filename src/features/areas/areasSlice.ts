@@ -11,8 +11,8 @@ export type AreasPayload = Record<string, number[]>;
 const initialState: AreasState = {};
 
 // First, create the thunk
-export const fetchAnnotations = createAsyncThunk(
-  'annotation/uploadFile',
+export const fetchAreas = createAsyncThunk(
+  'areas/uploadFile',
   async (file: File, { dispatch }) => {
     const response = await fileUpload(file)
 
@@ -21,12 +21,10 @@ export const fetchAnnotations = createAsyncThunk(
 )
 
 export const areasSlice = createSlice({
-  name: 'areast',
+  name: 'areas',
   initialState,
   reducers: {
     setAreas: (state, { payload }: PayloadAction<AreasPayload>) => {
-      console.log('setAreas', payload);
-
       const areas = Object.entries(payload).reduce((acc, [category, areas]) => {
         acc[category] = {
           areas,

@@ -14,10 +14,11 @@ interface AppProps {
 const App: React.FC<AppProps> = ({ areas }) => (
   <div className={styles.container}>
     <div className={styles.header}><Logo/></div>
-    {Object.keys(areas).length <= 0 ? <UploadFile/> : <DisplayAreas/>}
+    {Object.keys(areas).length <= 10 ? <UploadFile/> : <DisplayAreas/>}
   </div>
 );
 
 const mapStateToProps = ({ areas }: RootState) => ({ areas });
 
 export default connect(mapStateToProps)(App);
+export { App };

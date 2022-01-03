@@ -4,7 +4,7 @@ import { RootState } from '../../store/store';
 
 import styles from './areas.module.scss';
 
-interface AreasProps {
+export interface AreasProps {
   category: string;
   areas?: number[];
 }
@@ -14,7 +14,7 @@ const numberFormat = new Intl.NumberFormat('de-DE');
 const Areas: React.FC<AreasProps> = ({ areas }) => {
   return <>
     {areas?.map((area) => (
-      <div key={area} className={styles.container}>
+      <div key={area} data-testid="area" className={styles.container}>
         {numberFormat.format(area)}
       </div>
     ))}
@@ -31,3 +31,4 @@ const mapStateToProps = (state: RootState, { category }: AreasProps): AreasProps
 }
 
 export default connect(mapStateToProps)(Areas)
+export { Areas };
