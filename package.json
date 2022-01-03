@@ -31,9 +31,10 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "server": "node server/bin/www",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "server": "node app.js",
+    "start": "npm run build && npm run server",
+    "app": "react-scripts start",
+    "build": "react-scripts build && rm -rf server/static && mv build server/static",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,5 +1,5 @@
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -21,5 +21,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 app.use('/api/v1/polygons', polygons);
+
+app.use('/', express.static(path.join(__dirname, 'static')));
 
 module.exports = app;
