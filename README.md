@@ -13,10 +13,9 @@ The server will organise the categories in the file together and calculate the a
 In order to run the project, simple run the following command:
 
 #### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 This will build a static version of a react app that will then be served by the Express.js server.
+
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 ____
 
