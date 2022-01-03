@@ -39,9 +39,7 @@
     "start": "npm run build && node index.js",
     "app": "react-scripts start",
     "build": "react-scripts build && rm -rf server/static && mv build server/static",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build && rm -rf src && node index.js"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -78,10 +76,5 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "redux-mock-store": "^1.5.4",
     "ts-node": "^10.4.0"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ]
+  }
 }
