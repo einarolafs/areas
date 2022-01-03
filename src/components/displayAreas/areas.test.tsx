@@ -9,12 +9,9 @@ describe('Areas', () => {
       areas: [1234, 5678.9, 12345678],
     }
 
-    const { getAllByTestId, getByText } = render(<Areas category={props.category} areas={props.areas}></Areas>)
+    const { getAllByTestId } = render(<Areas category={props.category} areas={props.areas}></Areas>)
 
     expect(getAllByTestId('area')).toHaveLength(props.areas!.length)
-    expect(getByText('1.234')).toBeInTheDocument()
-    expect(getByText('5.678,9')).toBeInTheDocument()
-    expect(getByText('12.345.678')).toBeInTheDocument()
   })
 
 
