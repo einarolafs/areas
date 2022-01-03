@@ -36,12 +36,12 @@
   },
   "scripts": {
     "server": "node index.js",
-    "start": "npm run build && npm run server",
+    "start": "npm run build && node index.js",
     "app": "react-scripts start",
-    "build": "npm run local-build && rm -rf src",
-    "local-build": "react-scripts build && rm -rf server/static && mv build server/static",
+    "build": "react-scripts build && rm -rf server/static && mv build server/static",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build && rm -rf src && node index.js"
   },
   "eslintConfig": {
     "extends": [
