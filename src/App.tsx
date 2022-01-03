@@ -14,7 +14,7 @@ interface AppProps {
 const App: React.FC<AppProps> = ({ areas }) => (
   <div className={styles.container}>
     <div className={styles.header}><Logo/></div>
-    {Object.keys(areas).length <= 10 ? <UploadFile/> : <DisplayAreas/>}
+    {Object.keys(areas).length <= 0 ? <UploadFile/> : <DisplayAreas/>}
   </div>
 );
 
