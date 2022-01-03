@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# Web application to calculate and display the area of geometric data.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple demo for uploading a document with specific data, to be processed by a server and then returned to a react application that will store and display results.
 
-## Available Scripts
+The expected uploaded file should be a file containing list of multiple categories that each contain polygons.
 
-In the project directory, you can run:
+The application is design to use a file with the following format: [annotations.json](annotations.json)
 
-### `npm start`
+The server will organise the categories in the file together and calculate the area of each polygon in each category.
+
+## Running the application
+
+In order to run the project, simple run the following command:
+
+#### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+This will build a static version of a react app that will then be served by the Express.js server.
+
+____
+
+The react app and server can also be run separately by running the following commands:
+#### `npm run app`
+#### `npm run server`
+
+The server instance will be run at http://localhost:3001, and the React application can be run by going to [http://localhost:3000](http://localhost:3000) in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+
+## Testing
+
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
