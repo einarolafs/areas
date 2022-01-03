@@ -6,7 +6,7 @@
 
 const debug = require('debug')('server:server');
 const http = require('http');
-const app = require('../app');
+const app = require('./server/server');
 
 /**
  * Create HTTP server.
